@@ -1,0 +1,2054 @@
+@charset "UTF-8";
+/*
+Theme Name: Imprich Create
+Theme URI: http://localhost/wordpress511test/
+Author: Mizuki Hanabatake
+Author URI: http://localhost/
+Description: このテーマはサイト『Imprich Create』用のテーマです。
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+/*------------------------------------*\
+ * Table of Contents
+ *
+ * 1.0 - リセット
+ *   1.1 - テキスト位置
+ *   1.2 - フロート
+ *   1.3 - クリアフィックス
+ * 2.0 - レイアウト （全体grid）
+ *   2.1 - ヘッダーの描画位置
+ *   2.2 - パンくずリストの描画位置
+ *   2.3 - メインコンテンツの描画位置
+ *   2.4 - サイドバーコンテンツの描画位置
+ *   2.5 - フッターの描画位置
+ * 3.0 - ヘッダー
+ *   3.1 - ヘッダー内レイアウト （grid）
+ *   3.2 - ロゴ付きタイトル(site-branding)の装飾
+ *   3.3 - メニューボタン(menu-toggle) の装飾
+ *   3.4 - グローバルナビゲーション(main-navigation)の装飾
+ * 4.0 - ナビゲーション
+ *   4.1 - 投稿ナビゲーション - the_post_navigation…前へ、次へ
+ *   4.2 - ページネーション - the_posts_pagination...1,2,3
+ *   4.3 - パンくず
+ * 5.0 - ポートフォリオコンテンツ
+ *   5.1 - ポートフォリオアーカイブ			archive-portfolios.php
+ *   5.2 - ポートフォリオ詳細ページ			single-portfolios.php
+ * 6.0 - サイドバーコンテンツ - get_sidebar, sidebar.php
+ * 7.0 - フッター
+ * 8.0 - フォーム
+ *   8.1 - 検索フォーム
+ *   8.2 - お問い合わせフォーム
+ *   8.3 - ボタン
+ * 9.0 - 投稿コンテンツ
+ *   9.1 - 見出し
+ *   9.2 - 段落
+ *   9.3 - 定義リスト
+ *   9.4 - その他
+ *   9.5 - ブログアーカイブ - index.php
+ *   9.6 - 投稿メタ
+ *   9.7 - 投稿フッター
+ * 10.0 - コメントフォーム
+ * 11.0 - WordPress デフォルトスタイル
+ * 12.0 - トップページ
+ * 13.0 - ギャラリー
+ * 14.0 - サイトマップ
+ * 15.0 - 目次
+ *  */
+
+/*============================================
+全般的なスタイル
+-moz-　　…… Firefox
+-webkit-　…… Google Chrome、Safari
+-o-　　　　…… Opera
+-ms-　　　…… Internet Explorer
+============================================*/
+
+
+ /**********************************************
+  * 1.0 - リセット
+  *   1.1 - テキスト位置
+  *   1.2 - フロート
+  *   1.3 - クリアフィックス
+ **********************************************/
+
+* {
+	margin:0; padding:0; 		/*全要素のマージン・パディングをリセット*/
+}
+body{
+	background-color:hsl( 246, 30%, 99% );	/*ページ全体の背景色*/
+	font-size:14px;			/* フォントサイズを14pxにする */
+	line-height:1.6;		/* 行の高さを1.6倍にする */
+	color:#424242;			/* 文字色を濃い目のグレーにする */
+	font-family: "Helvetica Neue", "Helvetica", "Hiragino Kaku Gothic ProN", Meiryo, Arial, sans-serif;/* フォントの種類を変更にする */
+	-webkit-box-sizing: inherit;
+    box-sizing: inherit;
+
+}
+div{
+	clear: both;
+}
+
+p {
+    margin-bottom: 20px;
+}
+hr {
+    margin-bottom: 20px;
+    background-color: #e0e0e0;
+    border: 0;
+    height: 1px;
+}
+.fa, .far, .fas {
+    font-family: "Font Awesome 5 Free";
+}
+/** 1.1 - テキスト位置 **/
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+/** 1.2 - フロート **/
+.f-left {
+    float: left;
+}
+.f-right {
+    float: right;
+}
+
+/** 1.3 - クリアフィックス **/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /**********************************************
+ * 2.0 - レイアウト （全体grid）
+ *   2.1 - ヘッダーの描画位置
+ *   2.2 - パンくずリストの描画位置
+ *   2.3 - メインコンテンツの描画位置
+ *   2.4 - サイドバーコンテンツの描画位置
+ *   2.5 - フッターの描画位置
+ **********************************************/
+ #page {
+	 display: -ms-grid;
+	 display: grid;
+	 min-width: 0;
+}
+ @media screen and (max-width: 640px){
+ 	/* ブラウザの横幅が640px以下の場合(スマホ用) */
+	/* 7行 3列 */
+	/* スマホ用 grid レイアウトイメージ 行
+	1行目：auto:ヘッダー
+	2行目：40px:パンくずリスト
+	3行目：auto:メインコンテンツ
+	4行目：30px:
+	5行目：auto:サイドバーコンテンツ
+	6行目：30px:
+	7行目：auto:フッター
+	 */
+	 /* スマホ用 grid レイアウトイメージ 列
+ 	1列目：10px:
+ 	2列目：1fr: ヘッダー、パンくずリスト、メインコンテンツ、サイドバー、フッター
+ 	3列目：10px:
+ 	 */
+	#page {
+		-ms-grid-columns: 10px 1fr 10px;		/*  3列 */
+		-ms-grid-rows: auto 40px auto 30px auto 30px auto;		/*  7行 */
+		grid-template-columns: 10px 1fr 10px;	/*  3列 */
+		grid-template-rows: auto 40px auto 30px auto 30px auto;	/*  7行 */
+	}
+}
+ @media screen and (min-width: 641px){
+ 	/* ブラウザの横幅が641px以上の場合(PC用) */
+	/* 5行 5列 */
+	/* PC用 grid レイアウトイメージ
+	1行目：auto:ヘッダー
+	2行目：60px:パンくずリスト
+	3行目：auto:メインコンテンツ
+	4行目：40px:
+	5行目：auto:フッター
+	 */
+	 /* PC用 grid レイアウトイメージ 列
+ 	1列目：10px:
+	2列目：1fr: ヘッダー、パンくずリスト、メインコンテンツ、フッター
+	3列目：40px:
+	4列目：255px:サイドバー
+	5列目：10px:
+ 	 */
+ 	#page {
+ 		-ms-grid-columns: 10px 1fr 40px 255px 10px;	/* 5列 */
+ 		-ms-grid-rows: auto 60px auto 40px auto;	/* 5行 */
+ 		grid-template-columns: minmax(10px, 1fr) minmax(auto, 680px) 40px 255px minmax(10px, 1fr);	/* 5列 */
+ 		grid-template-rows: auto 60px auto 40px auto;	/* 5行 */
+ 	}
+ 	body, button, input, select, optgroup, textarea {
+ 		font-size: 16px;
+ 	}
+ }
+/* *   2.1 - ヘッダーの描画位置 */
+.site-header {
+	min-width: 0;
+	-ms-grid-column: 1;			/* 列の開始位置： 1列目から */
+	-ms-grid-row: 1;			/* 行の開始位置： 1行目※結合無し */
+	grid-row-start: 1;			/* 行の開始位置： 1行目※結合無し */
+	grid-column-start: 1;		/* 列の開始位置： 1列目から */
+	grid-column-end: -1;		/* 列の終了位置： 最後の列まで(5まで) */
+}
+@media screen and (max-width: 640px){
+   /* ブラウザの横幅が640px以下の場合(スマホ用) */
+	/* 7行 3列 */
+   .site-header {
+       -ms-grid-column-span: 3;		/* 3列分結合 */
+   }
+}
+@media screen and (min-width: 641px){
+ 	/* ブラウザの横幅が641px以上の場合(PC用) */
+	/* 5行 5列 */
+	.site-header {
+	    -ms-grid-column-span: 5;	/* 5列分結合 */
+	}
+ }
+ /* *   2.2 - パンくずリストの描画位置 */
+.bread_crumb{
+	-ms-grid-row: 2;			/* 行の開始位置：2行目から※結合無し */
+	grid-row-start: 2;			/* 行の開始位置：2行目から※結合無し */
+	min-width: 0;
+}
+@media screen and (max-width: 640px){
+ 	/* ブラウザの横幅が640px以下の場合(スマホ用) */
+	/* 7行 3列 */
+	 .bread_crumb{
+		-ms-grid-column: 2;		/* 列の開始位置：2列目から※結合無し*/
+ 		grid-column-start: 2;	/* 列の開始位置：2列目から※結合無し*/
+ 	 }
+}
+@media screen and (min-width: 641px){
+ 	/* ブラウザの横幅が641px以上の場合(PC用) */
+	/* 5行 5列 */
+	.bread_crumb{
+		-ms-grid-column: 2;			/* 列の開始位置：2列目から*/
+		-ms-grid-column-span: 3;	/* 3列分結合 */
+		grid-column-start: 2;		/* 列の開始位置：2列目から*/
+		grid-column-end: -2;		/* 列の終了位置：最後の列から一つ手前まで(4まで)*/
+    }
+ }
+
+
+/* *   2.3 - メインコンテンツの描画位置 */
+main{
+	-ms-grid-row: 3;			/* 行の開始位置：3行目から※結合無し */
+	grid-row-start: 3;			/* 行の開始位置：3行目から※結合無し */
+	min-width: 0;
+}
+@media screen and (max-width: 640px){
+ 	/* ブラウザの横幅が640px以下の場合(スマホ用) */
+	/* 7行 3列 */
+	 main {
+		-ms-grid-column: 2;		/* 列の開始位置：2列目から※結合無し*/
+ 		grid-column-start: 2;	/* 列の開始位置：2列目から※結合無し*/
+ 	 }
+}
+@media screen and (min-width: 641px){
+ 	/* ブラウザの横幅が641px以上の場合(PC用) */
+	/* 5行 5列 */
+	main.l-one-column{
+		-ms-grid-column: 2;			/* 列の開始位置：2列目から*/
+		-ms-grid-column-span: 3;	/* 3列分結合 */
+		grid-column-start: 2;		/* 列の開始位置：2列目から*/
+		grid-column-end: -2;		/* 列の終了位置：最後の列から一つ手前まで(4まで)*/
+    }
+    main.l-two-column{
+		-ms-grid-column: 2;			/* 列の開始位置：2列目から※結合無し*/
+		grid-column-start: 2;		/* 列の開始位置：2列目から※結合無し*/
+    }
+ }
+
+
+/* *   2.4 - サイドバーコンテンツの描画位置 */
+#secondary {
+	min-width: 0;
+}
+ @media screen and (max-width: 640px){
+ 	/* ブラウザの横幅が640px以下の場合(スマホ用) */
+	/* 7行 3列 */
+ 	#secondary {
+ 	    -ms-grid-column: 2;		/* 列の開始位置：2列目から※結合無し*/
+ 	    -ms-grid-row: 5;		/* 行の開始位置：5行目から※結合無し */
+ 	    grid-column-start: 2;	/* 列の開始位置：2列目から※結合無し*/
+ 	    grid-row-start: 5;		/* 行の開始位置：5行目から※結合無し */
+ 	}
+ }
+ @media screen and (min-width: 641px){
+ 	/* ブラウザの横幅が641px以上の場合(PC用) */
+	/* 5行 5列 */
+ 	#secondary {
+		-ms-grid-column: 4;		/* 列の開始位置：4列目から※結合無し*/
+ 	    -ms-grid-row: 3;		/* 行の開始位置：3行目から※結合無し（メインコンテンツと同じ行） */
+ 	    grid-column-start: 4;	/* 列の開始位置：4列目から※結合無し*/
+ 	    grid-row-start: 3;		/* 行の開始位置：3行目から※結合無し（メインコンテンツと同じ行） */
+ 	}
+ }
+
+/* *   2.5 - フッターの描画位置 */
+.site-footer {
+    min-width: 0;
+
+	-ms-grid-column: 1;			/* 列の開始位置： 1列目から */
+	grid-column-start: 1;		/* 列の開始位置： 1列目から */
+	grid-column-end: -1;		/* 列の終了位置： 最後の列まで(5まで) */
+}
+@media screen and (max-width: 640px){
+   /* ブラウザの横幅が640px以下の場合(スマホ用) */
+   /* 7行 3列 */
+   .site-footer {
+	   -ms-grid-column-span: 3;		/* 3列分結合 */
+       -ms-grid-row: 7;				/* 行の開始位置：7行目から※結合無し */
+       grid-row-start: 7;			/* 行の開始位置：7行目から※結合無し */
+   }
+}
+@media screen and (min-width: 641px){
+   /* ブラウザの横幅が641px以上の場合(PC用) */
+   /* 5行 5列 */
+   .site-footer {
+	   -ms-grid-column-span: 5;		/* 5列分結合 */
+       -ms-grid-row: 5;				/* 行の開始位置：5行目から※結合無し */
+       grid-row-start: 5;			/* 行の開始位置：5行目から※結合無し */
+   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /**********************************************
+  * 3.0 - ヘッダー
+  *   3.1 - ヘッダー内レイアウト （grid）
+  *   3.2 - ヘッダーの装飾
+  *   3.3 - ロゴ付きタイトル(site-branding)の装飾
+  *   3.4 - メニューボタン(menu-toggle) の装飾
+  *   3.5 - グローバルナビゲーション(main-navigation)の装飾
+ **********************************************/
+
+/* *   3.1 - ヘッダー内レイアウト （grid） */
+.site-header {
+    display: -ms-grid;
+    display: grid;
+	-ms-grid-columns: 10px 1fr 40px 1fr 10px;	/* 5列 */
+    -ms-grid-rows: auto 1fr;	/* 2行 */
+	grid-template-columns: minmax(10px, 1fr) minmax(auto, 680px) 40px minmax(auto, 255px) minmax(10px, 1fr);	/* 5列 */
+    grid-template-rows: auto 1fr;	/* 2行 */
+}
+
+
+.site-header .site-branding {
+	/* ===== ロゴ付きタイトル(site-branding) ===== */
+    -ms-grid-row: 1;				/* 行の開始位置： 1行目から※結合無し */
+    -ms-grid-row-align: center;		/* 横並び時の縦配置：上下中央ぞろえ(Internet Explorer) */
+    grid-row-start: 1;				/* 行の開始位置： 1行目から※結合無し */
+	align-self: center;				/* 横並び時の縦配置：上下中央ぞろえ(Firefox) */
+	-ms-grid-column: 2;		/* 列の開始位置： 2列目から  */
+	grid-column-start: 2;	/* 列の開始位置： 2列目から  */
+
+}
+
+
+
+.site-header .menu-toggle {
+	/* ===== メニューボタン(menu-toggle) ===== */
+	-ms-grid-row: 1;				/* 行の開始位置： 1行目から※結合無し */
+    grid-row-start: 1;				/* 行の開始位置： 1行目から※結合無し */
+
+	-ms-grid-column-align: end;		/* 右寄せ…end:オブジェクトは、左から右への配置では右寄せになり、右から左への配置では左寄せになります。*/
+    -ms-grid-row-align: center;		/* 横並び時の縦配置：上下中央ぞろえ(Internet Explorer) */
+    justify-self: end;				/* 右寄せ…end:オブジェクトは、左から右への配置では右寄せになり、右から左への配置では左寄せになります。位置合わせ:終端側に配置 */
+    align-self: center;				/* 横並び時の縦配置：上下中央ぞろえ(Firefox) */
+	-ms-grid-column: 4;		/* 列の開始位置： 4列目から※結合無し  */
+	grid-column-start: 4;	/* 列の開始位置： 4列目から※結合無し  */
+}
+@media screen and (max-width: 640px){
+   /* ブラウザの横幅が640px以下の場合(スマホ用) */
+   .site-header .menu-toggle {
+	   display: block;	/* 表示*/
+   }
+}
+
+@media screen and (min-width: 641px){
+	/* ブラウザの横幅が641px以上の場合(PC用) */
+	.site-header .menu-toggle {
+		display: none;	/* 非表示*/
+	}
+}
+.site-header .main-navigation {
+	/* ===== メニュー(main-navigation) ===== */
+	-ms-grid-column: 2;			/* 列の開始位置： 2列目から */
+	-ms-grid-column-span: 3;	/* 結合するセルの個数: 3セル分(Internet Explorer) */
+	-ms-grid-row: 1;			/* 行の開始位置： 1行目から(Internet Explorer)  */
+	-ms-grid-column-align: end;	/* 右寄せ…end:オブジェクトは、左から右への配置では右寄せになり、右から左への配置では左寄せになります。*/
+	-ms-grid-row-align: center;	/* 横並び時の縦配置：上下中央揃え */
+
+	grid-column-start: 2;		/* 列の開始位置： 2列目から */
+	grid-column-end: -2;		/* 列の終了位置：最後の列から一つ手前まで(4まで)*/
+	grid-row-start: 1;			/* 行の開始位置： 1行目から */
+	align-self: center;			/* 横並び時の縦配置：上下中央揃え */
+}
+
+@media screen and (max-width: 640px){
+   /* ブラウザの横幅が640px以下の場合(スマホ用) */
+	.site-header .main-navigation {
+		/* ===== メニュー(main-navigation) ===== */
+	    -ms-grid-column: 1;			/* 列の位置： 1列目から(Internet Explorer) */
+	    -ms-grid-column-span: 3;	/* 結合するセルの個数: 3セル分(Internet Explorer) */
+	    -ms-grid-row: 2;			/* 行の開始位置： 2行目から(Internet Explorer)  */
+	    -ms-grid-row-align: start;	/* 開始位置: 上端揃え */
+
+	    grid-column-start: 1;		/* 列の開始位置： 1列目から */
+	    grid-column-end: -1;		/* 列の終了位置： 最後の列まで(5まで) */
+	    grid-row-start: 2;			/* 行の開始位置： 2行目から */
+
+	    align-self: start;			/* 横位置: start.左寄せ。上端揃え*/
+	}
+}
+@media screen and (min-width: 641px){
+	/* ブラウザの横幅が641px以上の場合(PC用) */
+	.site-header .main-navigation {
+		justify-self: end;			/* 右寄せ…end:オブジェクトは、左から右への配置では右寄せになり、右から左への配置では左寄せになります。位置合わせ:終端側に配置。*/
+	}
+
+}
+
+
+/* *   3.2 - ヘッダーの装飾 */
+.site-header{
+	position: relative;
+	background-color: hsl( 246, 30%, 35% );	/*　共通ヘッダーの背景は紫　*/
+	padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+
+
+
+/* *   3.3 - ロゴ付きタイトル(site-branding)の装飾 */
+.site-header .site-branding {
+    position: relative;
+    display: -webkit-box;		/*　レイアウト：フレックスボックス(デフォルト：内部のブロック要素を横に並べる)Google Chrome、Safari */
+    display: -ms-flexbox;		/*　レイアウト：フレックスボックス(デフォルト：内部のブロック要素を横に並べる) */
+    display: flex;				/*　レイアウト：フレックスボックス(デフォルト：内部のブロック要素を横に並べる) */
+    -webkit-box-align: center;	/*横並び時の縦配置：上下中央ぞろえGoogle Chrome、Safari */
+    -ms-flex-align: center;		/*横並び時の縦配置：上下中央ぞろえ */
+    align-items: center;		/*横並び時の縦配置：上下中央ぞろえ */
+    z-index: 10;
+}
+
+.site-header .site-branding .custom-logo-link {
+    display: block;
+    margin-right: 5px;
+    vertical-align: middle;
+    width: auto;
+}
+.site-header .site-branding .custom-logo-link img {
+    display: block;
+    max-height: 42px;
+    width: auto;
+}
+.site-header .site-branding .site-title-description{
+	margin: 0;
+    padding: 0;
+}
+.site-header .site-branding .site-title-description .site-title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+.site-header .site-branding .site-title-description .site-title a{
+	color: #ffffff;
+    text-decoration: none;
+}
+.site-header .site-branding .site-title-description .site-description {
+	/* サブタイトル - description*/
+	margin: 0;
+    padding: 0;
+	font-size: 11px;
+	color: #c9c9c9;
+}
+
+@media screen and (max-width: 640px){
+	/* ブラウザの横幅が640px以下の場合(スマホ用) */
+	/* 3.0 - ヘッダー */
+}
+@media screen and (min-width: 641px){
+	/* ブラウザの横幅が641px以上の場合(PC用) */
+	/* 3.0 - ヘッダー */
+	/* ===== ロゴ付きタイトル(site-branding) ===== */
+	.site-header .site-branding .custom-logo-link {
+		margin-right: 10px;
+	}
+	.site-header .site-branding .custom-logo-link img {
+		max-height: 64px;
+	}
+
+}
+
+/* *   3.4 - メニューボタン(menu-toggle) の装飾 */
+.site-header .menu-toggle{
+	background-color: transparent;	/* 背景：透過*/
+	color: hsl( 246, 30%, 100% );	/* 文字色白*/
+}
+.site-header .menu-toggle:hover, .site-header .menu-toggle:focus {
+    background-color: transparent;	/* 背景：透過*/
+    color: #eee;
+}
+.site-header .menu-toggle .fas {
+	/*　FASアイコン設定　*/
+    display: block;
+    margin-bottom: 2px;
+    font-size: 24px;
+    font-weight: 900;
+}
+
+
+.site-header .menu-toggle {
+    position: relative;	/*相対位置　*/
+    padding: 3px;
+    border: 0;
+    background-color: transparent;	/* 背景：透過*/
+    color: #fafafa;
+    font-size: 12px;
+    text-transform: uppercase;	/* 大文字 */
+    line-height: 1;
+    white-space: nowrap;
+    z-index: 9999;
+}
+
+
+/* *   3.5 - グローバルナビゲーション(main-navigation)の装飾 */
+/* ===== メニュー(main-navigation) ===== */
+.site-header .main-navigation {
+	background-color: hsla( 246, 30%, 35%, .5 );
+	z-index: 1000;
+}
+
+.site-header .main-navigation ul {
+    list-style: none;		/* リストのマークは非表示 */
+}
+.site-header .main-navigation li {
+    position: relative;
+	display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+.site-header .main-navigation a {
+	color: hsl( 246, 30%, 100% );	/* 文字色白*/
+    display: block;
+    padding: 10px 15px;
+    font-size: 14px;
+    text-decoration: none;
+}
+.site-header .main-navigation a:hover {
+    background-color: #061279;
+}
+
+@media screen and (max-width: 640px){
+	/* ブラウザの横幅が640px以下の場合(スマホ用) */
+	/** 4.1 - グローバルナビゲーション **/
+
+	/* ===== メニュー(main-navigation) ===== */
+	.site-header .main-navigation.toggled-on {
+		display: block;		/* 表示 */
+	}
+
+
+	.site-header .main-navigation li+li{
+		/* liタグとliタグが隣接している時のみボーダー線を間に引く */
+		border-top: solid 1px rgba(99, 99, 99, 0.9);
+	}
+	.site-header .main-navigation {
+		position: relative;	/*相対位置への配置*/
+		display: none;	/*　非表示*/
+		z-index: 1000;
+		top: 10px;
+		left: 0;
+		/*width: 100%;*/	/* これをつけると右側に余白ができる。 */
+		height: auto;
+		padding: 10px;
+	}
+}
+@media screen and (min-width: 641px){
+	/* ブラウザの横幅が641px以上の場合(PC用) */
+	/* ===== メニュー(main-navigation) ===== */
+
+
+	.site-header .main-navigation ul {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+	}
+	.site-header .main-navigation a {
+		border-radius: 3px;
+		font-size: 16px;
+	}
+
+	.site-header .main-navigation ul > .current_page_item::after,
+	.site-header .main-navigation ul > .current-menu-item::after,
+	.site-header .main-navigation ul > .current_page_ancestor::after,
+	.site-header .main-navigation ul > .current-menu-ancestor::after {
+		content: "";
+		position: absolute;
+		right: 15px;
+		bottom: 2px;
+		left: 15px;
+		border-bottom: solid 3px #eee;
+	}
+
+}
+@media screen and (min-width: 641px){
+	/* ブラウザの横幅が641px以上の場合(PC用) */
+	.site-header .main-navigation .sub-menu {
+	    position: absolute;
+	    z-index: 99999;	/* 最上位 */
+	    left: 0;
+	    clip: rect(1px, 1px, 1px, 1px);
+	    width: 1px;
+	    height: 1px;
+	    padding: 0;
+	    border: 1px solid hsla(246, 97%, 28%, 0.95);
+	    border-top: 0;
+	    background-color: hsla(246, 97%, 28%, 0.95);
+	}
+}
+
+.site-header .main-navigation .sub-menu li {
+    display: block;
+    overflow: hidden;
+    width: 200px;
+    text-align: left;
+}
+
+.site-header .main-navigation .sub-menu li+li{
+	/* liタグとliタグが隣接している時のみボーダー線を間に引く */
+	border-top: none;
+}
+.site-header .main-navigation .sub-menu li a {
+    display: block;
+}
+
+
+@media screen and (max-width: 640px){
+	/* ブラウザの横幅が640px以下の場合(スマホ用) */
+
+	.site-header .main-navigation .sub-menu {
+        float: none;
+    }
+    .site-header .main-navigation .sub-menu li {
+        width: 100%;
+    }
+}
+
+.site-header .main-navigation .sub-menu ul {
+    top: 0;
+    left: 100%;
+    width: 100%;
+    border-left: 0;
+}
+
+.site-header .main-navigation li:hover > .sub-menu,
+.site-header .main-navigation .sub-menu li:hover > .sub-menu,
+.site-header .main-navigation .focus > .sub-menu {
+    overflow: visible;	/*  はみ出た要素の表示方法:ボックスからはみ出して表示*/
+    clip: inherit;
+    width: inherit;
+    height: inherit;
+}
+
+@media screen and (max-width: 640px){
+	/* ブラウザの横幅が640px以下の場合(スマホ用) */
+    .site-header .main-navigation li:hover > .sub-menu,
+    .site-header .main-navigation .sub-menu li:hover > .sub-menu,
+    .site-header .main-navigation .focus > .sub-menu {
+        width: 100%;
+    }
+
+	.site-header .main-navigation .sub-menu li a::before {
+		margin-left: 15px;
+		margin-right: 3px;
+	    content: '\f105';
+		font-family: "Font Awesome 5 Free";
+		font-weight: 900;
+	}
+}
+
+
+
+/**********************************************
+ * 4.0 - ナビゲーション
+ *   4.1 - 投稿ナビゲーション - the_post_navigation
+ *   4.2 - ページネーション - the_posts_pagination
+ *   4.3 - パンくず
+**********************************************/
+
+/**
+ * 4.0 - ナビゲーション
+ */
+
+
+/*   4.1 投稿ナビゲーション - the_post_navigation **/
+.post-navigation,
+.paging-navigation {
+    font-size: 14px;
+    font-weight: 300;
+    padding: 20px 0;
+    color: #fff;
+    overflow: hidden;
+}
+
+.post-navigation .nav-links,
+.paging-navigation .nav-links {
+    margin: 0 7px;
+}
+
+.post-navigation .nav-links a,
+.paging-navigation .nav-links a {
+    line-height: 1.7em;
+    position: relative;
+    display: inline-block;
+    width: 214px;
+    text-align: center;
+    text-decoration: none;
+    color: #6a6a6a;
+    background: #fff;
+	border: solid 1px #cacaca;
+	border-radius: 5px;
+}
+
+@media screen and (max-width: 640px){
+	/* ブラウザの横幅が640px以下の場合(スマホ用) */
+	/** 4.3 投稿ナビゲーション - the_post_navigation **/ **/
+
+    .post-navigation .nav-links a,
+    .paging-navigation .nav-links a {
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+        width: 100%;
+    }
+    .post-navigation .nav-next,
+    .paging-navigation .nav-next
+    .post-navigation .nav-previous,
+    .paging-navigation .nav-previous {
+        float: none;
+    }
+}
+
+.post-navigation a[rel='next'] {
+    float: right;
+    text-align: center;
+}
+@media screen and (max-width: 640px){
+	/* ブラウザの横幅が640px以下の場合(スマホ用) */
+	/** 4.3 投稿ナビゲーション - the_post_navigation **/ **/
+    .post-navigation a[rel='next'] {
+        float: none;
+    }
+}
+
+.post-navigation .nav-previous,
+.paging-navigation .nav-previous {
+    float: left;
+}
+
+.post-navigation .nav-next,
+.paging-navigation .nav-next {
+    float: right;
+	clear: none;
+}
+
+
+@media screen and (max-width: 640px){
+	/* ブラウザの横幅が640px以下の場合(スマホ用) */
+	/** 4.1 投稿ナビゲーション - the_post_navigation **/
+    .post-navigation .nav-next,
+    .paging-navigation .nav-next,
+    .post-navigation .nav-previous,
+    .paging-navigation .nav-previous {
+        float: none;
+        margin-bottom: 10px;
+    }
+}
+
+
+/*   4.2 - ページネーション - the_posts_pagination **/
+.pagination {
+    font-weight: bold;
+    clear: both;
+    overflow: hidden;
+    margin: 20px 0 80px 20px;
+    text-align: center;
+}
+
+.pagination .page-numbers {
+    display: inline;
+    list-style: none;
+}
+
+.pagination a.page-numbers {
+    display: inline-block;
+    padding: 3px 10px;
+    text-decoration: none;
+    color: #585858;
+    background-color: #f6f6f6;
+}
+
+.pagination span.current,
+.pagination a.page-numbers:hover
+ {
+	 /* ナビゲーションいカーソルがあった時、もしくは現状のページの場合の色 */
+    display: inline-block;
+    padding: 3px 10px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #b6a9de;
+}
+
+
+/*   4.3 - パンくず */
+
+ul.bread_crumb {
+    width: 100%;
+    max-width: 1000px;
+    margin: 10px auto;
+}
+
+ul.bread_crumb li {
+    font-size: 0.9em;
+    display: inline-block;
+}
+
+ul.bread_crumb li.sub:before {
+    content:'  > ';
+}
+
+@media screen and (max-width: 640px) {
+    ul.bread_crumb {
+        padding-left: 20px;
+    }
+}
+
+
+/**********************************************
+ * 5.0 - ポートフォリオコンテンツ
+ *   5.1 - ポートフォリオアーカイブ			archive-portfolios.php
+ *   5.2 - ポートフォリオ詳細ページ			single-portfolios.php
+**********************************************/
+
+
+
+/** 5.1 - ポートフォリオアーカイブ **/
+.portfolio-blocks {
+	margin-top: 12px;
+}
+
+/*    ポートフォリオナビゲーション			archive-portfolios.php */
+.portfolio-navs {
+}
+
+.portfolio-navs ul {
+	list-style: none;
+}
+
+.portfolio-navs ul li {
+    float: left;
+    margin-right: 16px;
+}
+
+.portfolio-navs ul li a {
+    display: inline-block;
+    padding-right: 16px;
+    padding-left: 16px;
+    text-decoration: none;
+    color: #454545;
+    border: 1px solid #e8e8e8;
+	margin-bottom: 10px;
+}
+
+.portfolio-navs ul li a:hover {
+    background: #e8e8e8;
+}
+
+@media screen and (max-width: 640px) {
+	/* ブラウザの横幅が640px以下の場合(スマホ用) */
+    .portfolio-navs ul li {
+        margin-right: 8px;
+        margin-bottom: 8px;
+    }
+
+    .portfolio-navs ul li a {
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+}
+
+.portfolio-block {
+    width: 40.5%;
+    margin-right: 12px;
+    margin-bottom: 24px;
+    padding: 16px;
+    text-align: center;
+    vertical-align: top;
+    border: 1px solid #e8e8e8;
+    display: inline-block;
+}
+
+@media screen and (max-width: 640px){
+	/* ブラウザの横幅が640px以下の場合(スマホ用) */
+    .portfolio-block {
+        float: none;
+        margin-right: auto;
+        margin-left: auto;
+
+		/* サイズに合うようフィットさせる */
+		width: available;
+		width: -moz-available;
+		width: -webkit-fill-available;
+    }
+}
+.portfolio-block .portfolio-thumbnail {
+	/*  16:9 枠 */
+	width: 100%;
+	height: 200px;
+
+	/* サムネイル描画調整 */
+	position: relative;
+}
+.portfolio-block .portfolio-thumbnail img{
+	/** 親サイズに合わせて縮小 **/
+	width: auto;
+	max-width:100%;
+	height: auto;
+	max-height:100%;
+	margin: auto;
+
+	/* サムネイル描画調整　上下中央表示 */
+	position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+
+
+.portfolio-blocks .portfolio-block .portfolio-header{
+	text-align: left;
+
+}
+.portfolio-blocks .portfolio-block .portfolio-header .portfolio-title{
+}
+.portfolio-blocks .portfolio-block .portfolio-header .portfolio-meta  {
+	font-size: 11px;
+	margin-bottom: 10px;
+}
+.portfolio-blocks .portfolio-block .portfolio-header .portfolio-meta .date {
+    border: 1px solid #e8e8e8;
+	margin-right: 16px;
+}
+.portfolio-blocks .portfolio-block .portfolio-header .portfolio-meta .date::before {
+    margin-right: 4px;
+    content: '\f073';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-weight: 400;
+}
+.portfolio-blocks .portfolio-block .portfolio-header .portfolio-meta .categories-links {
+	/* カテゴリ情報 */
+    border: 1px solid #e8e8e8;
+    background-color: #009d13;
+	color: #fff;
+	padding: 2px 16px;
+}
+.portfolio-blocks .portfolio-block .portfolio-header .portfolio-meta .categories-links a{
+	text-decoration: none;
+	color: #fff;
+}
+.portfolio-blocks .portfolio-block .portfolio-header .portfolio-meta .categories-links::before {
+	color: #fff;
+	margin-right: 4px;
+	content: '\f07c';	/* folder-open : https://fontawesome.com/icons/folder-open?style=regular*/
+	font-family: "Font Awesome 5 Free";
+	/*font-weight: 900;	/* 	solid : 通常アイコン、白抜きのもの */
+	font-weight: 400;	/* 	regular: アウトラインをとったようなもの	 */
+}
+
+.portfolio-block .portfolio-desc{
+	text-align: left;
+    min-height: 112px
+}
+
+.portfolio-block a.portfolio-more {
+    width: 140px;
+    max-width: 200px;
+    margin: auto;
+    padding: 10px 15px;
+	background-color: hsl( 246, 30%, 35% );
+    border-radius: 3px;
+    color: #fafafa;
+    font-size: 13px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.portfolio-block a.portfolio-more:hover {
+    opacity: 0.8;
+    color: #fff;
+}
+
+.portfolio-title {
+    font-size: 18px;
+}
+
+/** 5.2 - ポートフォリオ詳細ページ */
+.portfolio-detail {
+    overflow: hidden;
+}
+
+.portfolio-detail .portfolio-thumbnail {
+	/* サムネイル描画調整 */
+	width: 100%;
+	text-align: center;
+}
+
+.portfolio-detail .portfolio-thumbnail img {
+	/** 親サイズに合わせて縮小 **/
+	width: auto;
+	max-width:100%;
+}
+@media screen and (max-width: 640px){
+	/* ブラウザの横幅が640px以下の場合(スマホ用) */
+    .portfolio-detail .portfolio-thumbnail {
+        float: none;
+        width: 100%;
+    }
+}
+
+.portfolio-detail .portfolio-content {
+    float: right;
+    width: 431px;
+}
+
+.portfolio-detail .portfolio-content p {
+    margin-bottom: 2em;
+}
+@media screen and (max-width: 640px){
+	/* ブラウザの横幅が640px以下の場合(スマホ用) */
+
+    .portfolio-detail .portfolio-content {
+        float: none;
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/**********************************************
+ * 6.0 - サイドバーコンテンツ - get_sidebar, sidebar.php
+**********************************************/
+.widget-sidebar{
+	margin-bottom: 24px;
+}
+.widget-title{
+	font-size: 17px;
+	margin-top: 0;
+	letter-spacing: 2px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 5px;
+	color: #494949;
+	background: #f4f4f4;
+	border-left: solid 5px #7db4e6;
+	width: available;
+	width: -moz-available;
+	width: -webkit-fill-available;
+}
+
+.widget-sidebar ul{
+	list-style: none;
+}
+
+
+
+
+
+
+/**********************************************
+ * 7.0 - フッター
+**********************************************/
+.site-footer {
+    display: -ms-grid;
+    -ms-grid-columns: inherit;
+    -ms-grid-rows: auto auto;
+    display: grid;
+    grid-template-columns: inherit;
+    grid-template-rows: auto auto;
+
+
+}
+.site-footer {
+	background-color: hsl( 246, 30%, 96.5% );
+    border-color: hsl( 246, 30%, 96.5% );
+	padding-top: 2em;
+    padding-bottom: 2em;
+    border-top: 1px solid #e8e8e8;
+}
+.site-footer .site-info {
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 3;
+    -ms-grid-row: 2;
+    grid-column-start: 2;
+    grid-column-end: -2;
+    grid-row-start: 2;
+    min-width: 0;
+}
+.site-footer .site-info {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #616161;
+    font-size: 14px;
+}
+
+
+
+.site-footer .footer-logo {
+    margin-bottom: 2em;
+}
+.site-footer .footer-logo img{
+    width: 211px;
+	height: 24px;
+}
+
+.site-footer .footer-logo p {
+    font-size: 10px;
+    color: #a5a5a5;
+}
+
+.site-footer .footer-navigation {
+    margin-bottom: 2em;
+}
+
+.site-footer .footer-navigation li {
+    display: inline-block;
+}
+.site-footer .footer-navigation a {
+    padding-right: 16px;
+    padding-left: 16px;
+    text-decoration: none;
+    color: #454545;
+}
+.site-footer .footer-navigation a::before{
+	margin-right: 4px;
+	content: '\f105';	/* angle-right : https://fontawesome.com/icons/angle-right?style=solid */
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;	/* 	solid : 通常アイコン、白抜きのもの */
+	/*font-weight: 400;	/* 	regular: アウトラインをとったようなもの	 */
+}
+.site-footer .footer-navigation a:hover {
+    text-decoration: underline;
+}
+
+
+
+.site-footer .footer-copyright {
+    color: #aaa;
+}
+
+@media screen and (min-width: 641px){
+	/* ブラウザの横幅が641px以上の場合(PC用) */
+	.site-footer {
+		-ms-grid-column-span: 5;
+		-ms-grid-row: 5;
+		grid-row-start: 5;
+	}
+}
+@media screen and (max-width: 640px) {
+	/* ブラウザの横幅が640px以下の場合(スマホ用) */
+    .site-footer .footer-navigation li {
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+    .site-footer .footer-navigation li a {
+        line-height: 4em;
+        border-bottom: 1px solid #e8e8e8;
+    }
+	.site-footer .footer-navigation a {
+		display: block;
+		width: 100%;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**********************************************
+ * 8.0 - フォーム
+ *   8.1 - 検索フォーム
+ *   8.2 - お問い合わせフォーム
+ *   8.3 - ボタン
+**********************************************/
+
+
+/* 8.0 - フォーム */
+input[type=text],
+input[type=search],
+input[type=email],
+input[type=url],
+input[type=password],
+textarea {
+    font-size: 14px;
+    line-height: 1.7em;
+    vertical-align: middle;
+    border: 2px solid #e8e8e8;
+}
+/*   8.1 - 検索フォーム */
+#searchform div {
+	display: flex;
+	-webkit-box-align: center;	/*横並び時の縦配置：上下中央ぞろえGoogle Chrome、Safari */
+    -ms-flex-align: center;		/*横並び時の縦配置：上下中央ぞろえ */
+    align-items: center;		/*横並び時の縦配置：上下中央ぞろえ */
+}
+#searchform #s {
+    width: 180px;
+    margin-right: -5px;
+}
+#searchform #searchsubmit {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.6em;
+    width: 70px;
+    margin-right: 0;
+    margin-left: 0;
+    letter-spacing: 3px;
+    color: #fff;
+    border: 1px solid #d0d0d0;
+    background: #313b7d;
+}
+
+/*   8.2 - お問い合わせフォーム */
+.entry-content table.contact-form {
+    margin-bottom: 2em;
+    border: 1px solid #e8e8e8;
+}
+
+.entry-content table.contact-form th {
+    width: 30%;
+    padding-top: 1.3em;
+    padding-bottom: 1.3em;
+    padding-left: 2.6em;
+    text-align: left;
+    vertical-align: top;
+}
+
+.entry-content table.contact-form td {
+    width: 70%;
+    padding-top: 1.3em;
+    padding-bottom: 1.3em;
+    padding-left: 2em;
+    text-align: left;
+}
+
+.entry-content table.contact-form td textarea,
+.entry-content table.contact-form td input {
+    width: auto;
+    max-width: 94%;
+    padding: 2px 5px;
+}
+
+.entry-content table.contact-form textarea {
+    min-height: 200px;
+}
+@media screen and (max-width: 640px){
+	/* ブラウザの横幅が640px以下の場合(スマホ用) */
+    .entry-content table.contact-form {
+        display: block;
+    }
+    .entry-content table.contact-form tbody,
+    .entry-content table.contact-form thead,
+    .entry-content table.contact-form th,
+    .entry-content table.contact-form td,
+    .entry-content table.contact-form tr {
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+    .entry-content table.contact-form th,
+    .entry-content table.contact-form td {
+        padding-left: 1em;
+    }
+}
+
+/*   8.3 - ボタン */
+
+
+
+
+
+
+
+
+/**********************************************
+* 9.0 - 投稿コンテンツ
+*   9.1 - 見出し
+*   9.2 - 段落
+*   9.3 - 定義リスト
+*   9.4 - その他
+*   9.5 - ブログアーカイブ - index.php
+*   9.6 - 投稿メタ
+*   9.7 - 投稿フッター
+**********************************************/
+
+
+/* 9.0 - 投稿コンテンツ */
+/*   9.1 - 見出し */
+.entry-content .thumbnail img {
+	display: block;
+    margin: 0 auto;
+}
+
+/** 投稿タイトル **/
+.page-header .entry-title,
+.entry-header .entry-title,
+.page-header .archive-title,
+.page-header .blog .archive-title,
+.archive .page-header .archive-title,
+.page-header .archive .archive-title,
+.archive .page-header .archive-title {
+    font-size: 24px;
+    margin-top: 0;
+    padding-bottom: 16px;
+    letter-spacing: 2px;
+
+	padding: 0.4em 0.5em;/*文字の上下 左右の余白*/
+    color: #494949;/*文字色*/
+    background: #f4f4f4;/*背景色*/
+    border-left: solid 5px #7db4e6;/*左線*/
+    border-bottom: solid 3px #d7d7d7;/*下線*/
+
+	width: available;
+	width: -moz-available;
+	width: -webkit-fill-available;
+}
+.entry-post-title a{
+	text-decoration: none;
+	color: #0e0f91;
+}
+.entry-content h1 {
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 24px;
+    letter-spacing: 4px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	color: #010079;
+    text-shadow: 0 0 5px white;
+    border-left: solid 7px #010079;
+    background: -webkit-repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 3px,#e9f4ff 3px, #e9f4ff 7px);
+    background: repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 3px,#e9f4ff 3px, #e9f4ff 7px);
+
+
+}
+
+.entry-content h2 {
+    font-size: 20px;
+    line-height: 1.5em;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    color: #454545;
+    border-bottom: 1px solid #e8e8e8;
+
+
+	padding: 0.25em 0.5em;/*上下 左右の余白*/
+    color: #494949;/*文字色*/
+    background: transparent;/*背景透明に*/
+    border-left: solid 5px #7db4e6;/*左線*/
+}
+
+.entry-content h3 {
+    font-size: 18px;
+    line-height: 27px;
+    margin-bottom: 16px;
+
+	position: relative;
+	background: #f1f8ff;
+	padding: 0.25em 0.5em;
+	border-left: solid 2em #5c9ee7;
+}
+
+.entry-content h3:before {
+	font-family: "Font Awesome 5 Free";
+    content: "\f303";
+    position: absolute;
+    padding: 0em;
+    color: white;
+    font-weight: 900;
+    left: -1.35em;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.entry-content h4 {
+    font-size: 16px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+	position: relative;
+	padding: 0.25em 0.5em;
+}
+
+.entry-content h4:before {
+    display: inline-block;
+	margin-right: 5px;
+    content: '';
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: #153299;
+}
+
+.entry-content h5 {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.entry-content h6 {
+    font-size: 14px;
+    font-weight: 100;
+}
+
+/*   9.2 - 段落 */
+/*   9.3 - 定義リスト */
+/*   9.4 - その他 */
+
+
+
+/*   9.5 - ブログアーカイブ - index.php */
+.type-post.hentry{
+	overflow: hidden;
+    margin-bottom: 24px;
+    padding: 24px;
+	border: 1px solid #e8e8e8;
+	clear: both;
+}
+/* タイトル情報の装飾 */
+.entry-title {
+    font-size: 16px;
+    float: left;
+    margin-bottom: 16px;
+    padding-bottom: 0;
+    letter-spacing: 0;
+    border-bottom: none;
+    background: none;
+}
+.entry-title a{
+    text-decoration: none;
+    color: #040441;
+}
+.entry-content.bloglist .thumbnail{
+	display: inline-block;
+	float: left;
+    margin-right: 10px;
+	clear: none;
+}
+/* ブログコンテンツ情報の装飾 */
+.entry-content.bloglist .thumbnail img {
+	display: inline-block;
+    width: 175px;
+	max-width:100%;
+	height: auto;
+	margin:0;
+}
+.entry-content.bloglist .entry-summary{
+	overflow: hidden;
+	clear: none;
+}
+/* 続きを読むの装飾 */
+.entry-content .more-link {
+    display: block;
+    width: 140px;
+    max-width: 200px;
+    margin: 20px 0 10px auto;
+    padding: 10px 15px;
+	background-color: hsl( 246, 30%, 35% );
+    border-radius: 3px;
+    color: #fafafa;
+    font-size: 13px;
+    text-align: center;
+    text-decoration: none;
+}
+
+
+
+
+/*   9.6 - 投稿メタ */
+ .entry-meta {
+    margin-bottom: 24px;
+	font-size: 14px;
+    text-align: right;
+}
+.entry-meta span {
+    display: inline-block;
+    padding: 2px 16px;
+}
+.entry-meta .date {
+    border: 1px solid #e8e8e8;
+}
+.entry-meta .date::before {
+	margin-right: 4px;
+	content: '\f073';	/* カレンダーアイコン：https://fontawesome.com/icons/calendar-alt?style=regular*/
+	font-family: "Font Awesome 5 Free";
+	/*font-weight: 900;	/* 	solid : 通常アイコン、白抜きのもの */
+	font-weight: 400;	/* 	regular: アウトラインをとったようなもの	 */
+}
+.entry-meta .categories-links {
+	/* カテゴリ情報 */
+    margin-left: 16px;
+    border: 1px solid #e8e8e8;
+    background-color: #009d13;
+	color: #fff;
+}
+.entry-meta .categories-links a{
+	text-decoration: none;
+	color: #fff;
+}
+.entry-meta .categories-links::before {
+	color: #fff;
+	margin-right: 4px;
+	content: '\f07c';	/* folder-open : https://fontawesome.com/icons/folder-open?style=regular*/
+	font-family: "Font Awesome 5 Free";
+	/*font-weight: 900;	/* 	solid : 通常アイコン、白抜きのもの */
+	font-weight: 400;	/* 	regular: アウトラインをとったようなもの	 */
+}
+/*   9.7 - 投稿フッター */
+.entry-footer{
+	clear: both;
+}
+.entry-footer span{
+    display: inline-block;
+    padding: 2px 16px;
+    border: 1px solid #e8e8e8;
+	font-size: 14px;
+}
+.entry-footer a{
+	text-decoration: none;
+    color: #261a4e;
+}
+
+.entry-footer span.comments-link::before {
+	color: #999;
+	margin-right: 4px;
+	content: '\f086';	/* comments : https://fontawesome.com/icons/comments?style=solid */
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;	/* 	solid : 通常アイコン、白抜きのもの */
+	/*font-weight: 400;	/* 	regular: アウトラインをとったようなもの	 */
+}
+
+.entry-footer span.tag-links::before{
+	color: #999;
+	margin-right: 4px;
+	content: '\f02b';	/* tag : https://fontawesome.com/icons/tag?style=solid */
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;	/* 	solid : 通常アイコン、白抜きのもの */
+	/*font-weight: 400;	/* 	regular: アウトラインをとったようなもの	 */
+}
+
+
+/**********************************************
+* 10.0 - コメントフォーム
+**********************************************/
+#reply-title {
+    margin-top: 0;
+    background: none;
+}
+
+.comments-area {
+    margin-top: 1em;
+    padding: 0 16px 16px;
+    border: 1px solid #e8e8e8;
+}
+
+.comments-area input[type=text],
+.comments-area input[type=url],
+.comments-area input[type=email] {
+    float: right;
+    width: 430px;
+}
+
+.comments-area label {
+    display: inline-block;
+    min-width: 230px;
+}
+
+.comments-area .form-allowed-tags {
+    font-size: 12px;
+}
+
+.comments-area .form-submit {
+    text-align: center;
+}
+
+.comments-area p {
+    overflow: hidden;
+    margin-bottom: 1em;
+	clear: both;
+
+}
+
+.comments-area p label {
+    float: left;
+}
+
+.comments-area p small {
+    font-size: 0.8em;
+}
+
+.comments-area textarea {
+    width: 100%;
+    margin-bottom: 1em;
+}
+@media screen and (max-width: 640px){
+	/* ブラウザの横幅が640px以下の場合(スマホ用) */
+    .comments-area input[type=text],
+    .comments-area input[type=url],
+    .comments-area input[type=email],
+    .comments-area textarea {
+        width: 100%;
+    }
+}
+
+.comments-area #submit {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+
+	padding-left: 10px;
+	padding-right: 10px;
+    font-weight: normal;
+    line-height: 1.6em;
+    letter-spacing: 3px;
+    color: #fff;
+    border: 1px solid #d0d0d0;
+    border-radius: 5px;
+    background: #313b7d;
+    background-image: -webkit-linear-gradient(224deg, rgba(211, 120, 120, 0.25) 0%, rgba(149, 36, 129, 0.25) 50%, rgba(185, 199, 39, 0.25) 100%);
+    background-image:         linear-gradient(-134deg, rgba(211, 120, 120, 0.25) 0%, rgba(149, 36, 129, 0.25) 50%, rgba(185, 199, 39, 0.25) 100%);
+    background-image: -webkit-linear-gradient(269deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.21) 100%);
+    background-image:         linear-gradient(-179deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.21) 100%);
+
+}
+
+#respond h3 {
+    clear: both;
+}
+
+.comment-author {
+    left: 0;
+    float: left;
+    margin-right: 30px;
+	display: -webkit-box;		/*　レイアウト：フレックスボックス(デフォルト：内部のブロック要素を横に並べる)Google Chrome、Safari */
+    display: -ms-flexbox;		/*　レイアウト：フレックスボックス(デフォルト：内部のブロック要素を横に並べる) */
+    display: flex;				/*　レイアウト：フレックスボックス(デフォルト：内部のブロック要素を横に並べる) */
+    -webkit-box-align: center;	/*横並び時の縦配置：上下中央ぞろえGoogle Chrome、Safari */
+    -ms-flex-align: center;		/*横並び時の縦配置：上下中央ぞろえ */
+    align-items: center;		/*横並び時の縦配置：上下中央ぞろえ */
+
+}
+
+.commentlist {
+    padding-left: 0;
+    list-style: none;
+}
+
+.commentlist li {
+    position: relative;
+    margin-bottom: 1em;
+}
+
+.commentlist .children {
+    margin-left: 1.8em;
+	list-style: none;
+}
+
+.commentlist .children .comment-body {
+    margin-bottom: 1em;
+    padding-top: 1em;
+    padding-left: 1em;
+    border-top: 1px solid #e8e8e8;
+}
+
+.commentlist .comment-body {
+    margin-bottom: 1em;
+    padding-top: 1em;
+    padding-left: 1em;
+}
+
+.commentlist .comment-reply-link {
+    font-size: 0.8em;
+    display: inline-block;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #8e5a37;
+    background: #694329;
+}
+
+.commentlist .comment-meta {
+    display: inline;
+}
+
+.commentlist .comment-meta a{
+    font-size: 11px;
+}
+.visual img {
+    display: block;
+    max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+
+
+
+
+
+
+/**********************************************
+* 11.0 - WordPress デフォルトスタイル
+**********************************************/
+
+.screen-reader-text {
+	/* 「投稿ナビゲーション」という文字列は非表示にする */
+    position: absolute !important;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    width: 1px;
+    height: 1px;
+}
+
+
+
+
+
+
+
+
+
+
+/**********************************************
+* 12.0 - トップページ
+**********************************************/
+
+/**********************************************
+* 13.0 - ギャラリー
+**********************************************/
+
+.gallery-navs ul {
+	list-style: none;
+}
+
+.gallery-navs ul li {
+    float: left;
+    margin-right: 16px;
+}
+
+.gallery-navs ul li a {
+    display: inline-block;
+    padding-right: 16px;
+    padding-left: 16px;
+    text-decoration: none;
+    color: #454545;
+    border: 1px solid #e8e8e8;
+	margin-bottom: 10px;
+}
+
+.gallery-navs ul li a:hover {
+    background: #e8e8e8;
+}
+
+@media screen and (max-width: 640px) {
+	/* ブラウザの横幅が640px以下の場合(スマホ用) */
+    .gallery-navs ul li {
+        margin-right: 8px;
+        margin-bottom: 8px;
+    }
+
+    .gallery-navs ul li a {
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+}
+
+
+.gallery-blocks{
+	margin-top: 12px;
+
+}
+.gallery-blocks .gallery-block{
+	width: 40.5%;
+    margin-right: 12px;
+    margin-bottom: 24px;
+    padding: 16px;
+    text-align: center;
+    vertical-align: top;
+    border: 1px solid #e8e8e8;
+    display: inline-block;
+}
+
+@media screen and (max-width: 640px){
+	/* ブラウザの横幅が640px以下の場合(スマホ用) */
+    .gallery-blocks .gallery-block{
+        float: none;
+        margin-right: auto;
+        margin-left: auto;
+
+		/* サイズに合うようフィットさせる */
+		width: available;
+		width: -moz-available;
+		width: -webkit-fill-available;
+    }
+}
+.gallery-blocks .gallery-block .gallery-thumbnail{
+	/*  16:9 枠 */
+	width: 100%;
+	height: 200px;
+
+	/* サムネイル描画調整 */
+	position: relative;
+}
+.gallery-blocks .gallery-block .gallery-thumbnail img{
+	/** 親サイズに合わせて縮小 **/
+	width: auto;
+	max-width:100%;
+	height: auto;
+	max-height:100%;
+	margin: auto;
+
+	/* サムネイル描画調整　上下中央表示 */
+	position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+.gallery-blocks .gallery-block .gallery-header{
+	text-align: left;
+
+}
+.gallery-blocks .gallery-block .gallery-header .gallery-title{
+}
+.gallery-blocks .gallery-block .gallery-header .gallery-meta  {
+	font-size: 11px;
+	margin-bottom: 10px;
+}
+.gallery-blocks .gallery-block .gallery-header .gallery-meta .date {
+    border: 1px solid #e8e8e8;
+	margin-right: 16px;
+}
+.gallery-blocks .gallery-block .gallery-header .gallery-meta .date::before {
+    margin-right: 4px;
+    content: '\f073';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-weight: 400;
+}
+.gallery-blocks .gallery-block .gallery-header .gallery-meta .categories-links {
+	/* カテゴリ情報 */
+    border: 1px solid #e8e8e8;
+    background-color: #009d13;
+	color: #fff;
+	padding: 2px 16px;
+}
+.gallery-blocks .gallery-block .gallery-header .gallery-meta .categories-links a{
+	text-decoration: none;
+	color: #fff;
+}
+.gallery-blocks .gallery-block .gallery-header .gallery-meta .categories-links::before {
+	color: #fff;
+	margin-right: 4px;
+	content: '\f07c';	/* folder-open : https://fontawesome.com/icons/folder-open?style=regular*/
+	font-family: "Font Awesome 5 Free";
+	/*font-weight: 900;	/* 	solid : 通常アイコン、白抜きのもの */
+	font-weight: 400;	/* 	regular: アウトラインをとったようなもの	 */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**********************************************
+* 14.0 - サイトマップ
+**********************************************/
+.sitemap ul  {
+	margin-left: 50px;
+}
+
+.sitemap ul li ul {
+	list-style: none;
+}
+
+
+.sitemap ul li ul {
+  margin-top: .5em;
+  margin-bottom: .75em;
+  margin-left: 48px;
+}
+
+.sitemap ul li ul li {
+  margin-bottom: .25em;
+  position: relative;
+}
+
+.sitemap ul li ul li::before {
+  content: "";
+  position: absolute;
+  top: -0.5em;
+  left: -16px;
+  width: 10px;
+  height: calc(100% + .75em);
+  border-left: 1px solid #3972b2;
+}
+
+.sitemap ul li ul li:last-child::before {
+  height: calc(1em + .25em);
+}
+
+.sitemap ul li ul li::after {
+  content: "";
+  position: absolute;
+  top: .75em;
+  left: -16px;
+  width: 10px;
+  border-bottom: 1px solid #3972b2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**********************************************
+
+* 15.0 - 目次
+**********************************************/
+#toc_container {
+    background: #f9f9f9 none repeat scroll 0 0;
+    border: 1px solid #aaa;
+    display: table;
+    font-size: 95%;
+    margin-bottom: 1em;
+    margin-left: 1em;
+    padding: 10px;
+    width: auto;
+}
+.toc_title {
+    font-weight: 700;
+    text-align: center;
+}
+#toc_container li, #toc_container ol, #toc_container ol li{
+    list-style-position: outside;
+    margin-left: 1em;
+    margin-right: 1em;
+    padding-left: 0;
+}
