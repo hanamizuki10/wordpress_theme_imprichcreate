@@ -1486,8 +1486,16 @@ textarea {
 }
 
 /*   9.2 - 段落 */
+.entry-content p {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
 /*   9.3 - 定義リスト */
 /*   9.4 - その他 */
+.entry-content ul {
+	margin-left: 30px;
+}
 
 
 
