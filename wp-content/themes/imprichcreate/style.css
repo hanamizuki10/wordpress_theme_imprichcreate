@@ -48,12 +48,13 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
  *   9.5 - ブログアーカイブ - index.php
  *   9.6 - 投稿メタ
  *   9.7 - 投稿フッター
+ *   9.8 - 目次
  * 10.0 - コメントフォーム
  * 11.0 - WordPress デフォルトスタイル
  * 12.0 - トップページ
  * 13.0 - ギャラリー
  * 14.0 - サイトマップ
- * 15.0 - 目次
+ * 15.0 - ソーシャルリンク
  *  */
 
 /*============================================
@@ -1362,8 +1363,8 @@ textarea {
 *   9.5 - ブログアーカイブ - index.php
 *   9.6 - 投稿メタ
 *   9.7 - 投稿フッター
+*   9.8 - 目次
 **********************************************/
-
 
 /* 9.0 - 投稿コンテンツ */
 /*   9.1 - 見出し */
@@ -1621,6 +1622,39 @@ textarea {
 }
 
 
+
+/*   9.8 - 目次 */
+#toc_container {
+    background: #f9f9f9 none repeat scroll 0 0;
+    border: 1px solid #aaa;
+    display: table;
+    font-size: 95%;
+    margin-bottom: 1em;
+    margin-left: 1em;
+    padding: 10px;
+    width: auto;
+}
+.toc_title {
+    font-weight: 700;
+    text-align: center;
+}
+#toc_container li, #toc_container ol, #toc_container ol li{
+    list-style-position: outside;
+    margin-left: 1em;
+    margin-right: 1em;
+    padding-left: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
 /**********************************************
 * 10.0 - コメントフォーム
 **********************************************/
@@ -1634,17 +1668,20 @@ textarea {
     padding: 0 16px 16px;
     border: 1px solid #e8e8e8;
 }
+.comments-area .required {
+    color: #f44336;
+}
 
 .comments-area input[type=text],
 .comments-area input[type=url],
 .comments-area input[type=email] {
-    float: right;
-    width: 430px;
+    width: 99%;
 }
 
 .comments-area label {
     display: inline-block;
     min-width: 230px;
+	font-size: 13px;
 }
 
 .comments-area .form-allowed-tags {
@@ -1663,7 +1700,7 @@ textarea {
 }
 
 .comments-area p label {
-    float: left;
+	margin-left: 5px;
 }
 
 .comments-area p small {
@@ -1671,7 +1708,7 @@ textarea {
 }
 
 .comments-area textarea {
-    width: 100%;
+    width: 99%;
     margin-bottom: 1em;
 }
 @media screen and (max-width: 640px){
@@ -1680,7 +1717,7 @@ textarea {
     .comments-area input[type=url],
     .comments-area input[type=email],
     .comments-area textarea {
-        width: 100%;
+        width: 98%;
     }
 }
 
@@ -2016,39 +2053,28 @@ textarea {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 /**********************************************
-
-* 15.0 - 目次
+* 15.0 - ソーシャルリンク
 **********************************************/
-#toc_container {
-    background: #f9f9f9 none repeat scroll 0 0;
-    border: 1px solid #aaa;
-    display: table;
-    font-size: 95%;
-    margin-bottom: 1em;
-    margin-left: 1em;
-    padding: 10px;
-    width: auto;
+.share ul{
+	list-style: none;
 }
-.toc_title {
-    font-weight: 700;
-    text-align: center;
+.share ul li{
+    display: inline-block;
+	margin-right: 15px;
+
+	padding: 10px 23px;
+    border-radius: 3px;
+    cursor: pointer;
+
 }
-#toc_container li, #toc_container ol, #toc_container ol li{
-    list-style-position: outside;
-    margin-left: 1em;
-    margin-right: 1em;
-    padding-left: 0;
+.share ul li a{
+	color: #fff;
+	text-decoration: none;
+}
+.share .facebook{
+    background: #4267b2;
+}
+.share .tweet{
+    background: #55acee;
 }

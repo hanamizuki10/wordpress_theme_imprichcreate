@@ -56,6 +56,13 @@ get_header(); ?>
 			<?php endwhile; //投稿ループ終了 ?>
 		<?php endif; //条件分岐終了 ?>
 
+		<!--▼ソーシャルリンク : 開始-->
+		<?php get_template_part( 'sns' ); ?>
+		<!--▲ソーシャルリンク : 終了-->
+
+
+
+
 		<!--▼コメント : 開始-->
 		<?php comments_template();?>
 		<!--▲コメント : 終了-->
