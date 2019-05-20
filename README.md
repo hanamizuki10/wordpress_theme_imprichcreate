@@ -1,6 +1,6 @@
 
 # wordpress_theme_imprichcreate
-これは、個人運営しているブログサイト [IMPRICH CREATE](https://www.imprich-create.site/　"IMPRICH CREATE | 徒然なるままに… ハナミズキによるIT忘備録") のオリジナルテーマです。wordpress用個人テーマ【imprichcreate】
+これは、個人運営しているブログサイト [IMPRICH CREATE | 徒然なるままに… ハナミズキによるIT忘備録](https://www.imprich-create.site/) のオリジナルテーマです。wordpress用個人テーマ【imprichcreate】
 
 # Dependency
 PHP 7.1
