@@ -20,5 +20,5 @@ GPL v2
 hanamizuki10
 
 # References
-・WordPress 標準デザイン講座【Version 4.x対応】
-・エンジニアのためのWordPress開発入門
+- WordPress 標準デザイン講座【Version 4.x対応】
+- エンジニアのためのWordPress開発入門
