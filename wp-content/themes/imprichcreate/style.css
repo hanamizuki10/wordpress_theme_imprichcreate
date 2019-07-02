@@ -5,7 +5,7 @@ Theme URI: https://www.imprich-create.site/
 Author: Mizuki Hanabatake
 Author URI: https://www.imprich-create.site/
 Description: このテーマはサイト『Imprich Create』用のテーマです。
-Version: 1.4
+Version: 1.5
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -162,7 +162,7 @@ hr {
 	/* 7行 3列 */
 	/* スマホ用 grid レイアウトイメージ 行
 	1行目：auto:ヘッダー
-	2行目：60px:パンくずリスト
+	2行目：auto:パンくずリスト
 	3行目：auto:メインコンテンツ
 	4行目：30px:
 	5行目：auto:サイドバーコンテンツ
@@ -176,9 +176,9 @@ hr {
  	 */
 	#page {
 		-ms-grid-columns: 10px 1fr 10px;		/*  3列 */
-		-ms-grid-rows: auto 60px auto 30px auto 30px auto;		/*  7行 */
+		-ms-grid-rows: auto auto auto 30px auto 30px auto;		/*  7行 */
 		grid-template-columns: 10px 1fr 10px;	/*  3列 */
-		grid-template-rows: auto 60px auto 30px auto 30px auto;	/*  7行 */
+		grid-template-rows: auto auto auto 30px auto 30px auto;	/*  7行 */
 	}
 }
  @media screen and (min-width: 641px){
