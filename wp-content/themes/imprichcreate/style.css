@@ -176,9 +176,9 @@ hr {
  	 */
 	#page {
 		-ms-grid-columns: 10px 1fr 10px;		/*  3列 */
-		-ms-grid-rows: auto 40px auto 30px auto 30px auto;		/*  7行 */
+		-ms-grid-rows: auto 60px auto 30px auto 30px auto;		/*  7行 */
 		grid-template-columns: 10px 1fr 10px;	/*  3列 */
-		grid-template-rows: auto 40px auto 30px auto 30px auto;	/*  7行 */
+		grid-template-rows: auto 60px auto 30px auto 30px auto;	/*  7行 */
 	}
 }
  @media screen and (min-width: 641px){
