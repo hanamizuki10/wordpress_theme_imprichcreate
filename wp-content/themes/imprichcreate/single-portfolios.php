@@ -68,7 +68,7 @@ get_header(); ?>
 						<!-- ▲投稿コンテンツ : 終了 -->
                         <?php if( get_post_meta( $post->ID, 'portfolio_url', true ) ) :?>
                         <h4>URL</h4>
-                        <p><?php echo esc_html( get_post_meta( $post->ID, 'portfolio_url', true ) ); ?></p>
+                        <p><a href="<?php echo esc_html( get_post_meta( $post->ID, 'portfolio_url', true ) ); ?>" ref="noopener noreferrer" target="_blank"><?php echo esc_html( get_post_meta( $post->ID, 'portfolio_url', true ) ); ?></a></p>
                         <?php endif;?>
 
 					</div><!--/.entry-content-->
