@@ -67,7 +67,7 @@ function add_my_scripts() {
 		'base-style', //CSSの識別ID
 		esc_url( get_stylesheet_uri() ), //CSSファイルへのpath ←追記
 		array(), //先に読み込むCSS
-		'1.3', //CSSファイルのバージョン指定
+		'1.4', //CSSファイルのバージョン指定
 		'all' //CSSのmedia属性
 	);
     wp_enqueue_style( 'fontawesome-style', get_template_directory_uri() . '/fontawesome/css/all.css', array( ), '5.8.1', 'all' );
