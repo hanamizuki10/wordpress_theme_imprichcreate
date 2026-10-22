@@ -6,3 +6,6 @@
 /BingSiteAuth.xml
 /*.php
 /readme.html
+/node_modules
+/playground/logs/*
+!/playground/logs/.gitkeep
