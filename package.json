@@ -1,0 +1,15 @@
+{
+  "name": "wordpress_theme_imprichcreate",
+  "private": true,
+  "description": "IMPRICH CREATE の WordPress テーマ",
+  "license": "GPL-2.0-or-later",
+  "engines": {
+    "node": ">=20.10.0"
+  },
+  "scripts": {
+    "playground": "wp-playground-cli server --php=8.4 --wp=latest --mount=./wp-content/themes/imprichcreate:/wordpress/wp-content/themes/imprichcreate --mount=./playground:/playground --blueprint=./playground/blueprint.json"
+  },
+  "devDependencies": {
+    "@wp-playground/cli": "3.1.54"
+  }
+}

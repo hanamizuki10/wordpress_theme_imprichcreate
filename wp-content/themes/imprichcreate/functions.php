@@ -67,7 +67,7 @@ function add_my_scripts() {
 		'base-style', //CSSの識別ID
 		esc_url( get_stylesheet_uri() ), //CSSファイルへのpath ←追記
 		array(), //先に読み込むCSS
-		'1.8', //CSSファイルのバージョン指定
+		'1.9', //CSSファイルのバージョン指定
 		'all' //CSSのmedia属性
 	);
     wp_enqueue_style( 'fontawesome-style', get_template_directory_uri() . '/fontawesome/css/all.css', array( ), '5.8.1', 'all' );
@@ -238,6 +238,22 @@ function custom_register_taxonomy() {
 	// これで管理者用画面にギャラリーカテゴリーという項目が表示される。
 }
 add_action( 'init', 'custom_register_taxonomy' );
+
+/*
+一覧ページの見出し（the_archive_title）を調整する。
+WordPress 5.5以降、カスタム投稿タイプの一覧にも「アーカイブ: 」が付くようになったため外す。
+投稿一覧ページは「アーカイブ」ではなく、パンくずリストに合わせて「ブログ」と表示する。
+ */
+function custom_archive_title( $title ) {
+	if ( is_home() ) {
+		return 'ブログ';
+	}
+	if ( is_post_type_archive() ) {
+		return post_type_archive_title( '', false );
+	}
+	return $title;
+}
+add_filter( 'get_the_archive_title', 'custom_archive_title' );
 
 
 

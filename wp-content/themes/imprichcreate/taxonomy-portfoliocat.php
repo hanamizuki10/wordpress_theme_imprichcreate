@@ -53,19 +53,18 @@ get_header(); ?>
 
 					<!--▼ ポートフォリオ用 画像を表示 : 開始 -->
 					<div class="portfolio-thumbnail">
+						<?php // URLが無くても画像は表示し、URLがあるときだけリンクにする ?>
+						<?php if( get_post_meta( $post->ID, 'portfolio_url', true ) ) :?>
+						<a href="<?php echo esc_url( get_post_meta( $post->ID, 'portfolio_url', true ) ); ?>" target="_blank">
+						<?php endif;?>
 						<?php if( has_post_thumbnail() ): ?>
-							<?php if( get_post_meta( $post->ID, 'portfolio_url', true ) ) :?>
-							<a href="<?php echo esc_url( get_post_meta( $post->ID, 'portfolio_url', true ) ); ?>" target="_blank">
 							<?php the_post_thumbnail(); ?>
-							</a>
-							<?php endif;?>
 						<?php else: // アイキャッチ画像がないとき ?>
-							<?php if( get_post_meta( $post->ID, 'portfolio_url', true ) ) :?>
-							<a href="<?php echo esc_url( get_post_meta( $post->ID, 'portfolio_url', true ) ); ?>" target="_blank">
 							<img src="<?php echo esc_url( get_template_directory_uri()); ?>/img/content/portfolio-noimage.png" alt="" class="img-responsive">
-							</a>
-							<?php endif;?>
 						<?php endif; ?>
+						<?php if( get_post_meta( $post->ID, 'portfolio_url', true ) ) :?>
+						</a>
+						<?php endif;?>
 					</div>
 					<!--▲ ポートフォリオ用 画像を表示 : 終了 -->
 

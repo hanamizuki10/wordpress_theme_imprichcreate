@@ -5,7 +5,7 @@ Theme URI: https://www.imprich-create.site/
 Author: Mizuki Hanabatake
 Author URI: https://www.imprich-create.site/
 Description: このテーマはサイト『Imprich Create』用のテーマです。
-Version: 1.8
+Version: 1.9
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -2091,6 +2091,12 @@ textarea {
 .share .facebook{
     background: #4267b2;
 }
-.share .tweet{
-    background: #55acee;
+.share .x-post{
+    background: #000;
+}
+.share .icon-x{
+	width: 1em;
+	height: 1em;
+	fill: currentColor;
+	vertical-align: -0.125em;	/* Font Awesome のアイコンと高さを揃える */
 }
