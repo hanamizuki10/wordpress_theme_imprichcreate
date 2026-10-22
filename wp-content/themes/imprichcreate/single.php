@@ -32,7 +32,7 @@ get_header(); ?>
 
 					<div class="entry-meta">
 						<span class="date"><time class="entry-date"><?php the_time( 'Y年n月j日' );?></time></span>
-						<span class="categories-links info"><a href="#" rel="category"><?php the_category(',');?></a></span>
+						<span class="categories-links info"><?php the_category(',');?></span>
 					</div><!--/.entry-meta -->
 					<div class="entry-content">
 						<!-- ▼アイキャッチ画像 : 開始 -->

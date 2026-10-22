@@ -35,6 +35,7 @@
 </footer>
 <!--▲フッター : 終了-->
 <?php wp_footer(); ?>
-</div>
+</div><!-- #page -->
+</div><!-- #wrapper -->
 </body>
 </html>

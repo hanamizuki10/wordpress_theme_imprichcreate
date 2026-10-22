@@ -42,10 +42,12 @@ get_header(); ?>
                 <?php the_post(); //次の記事のデータをセットする
 					$thumbnail_id = get_post_thumbnail_id();
 					//$eye_img=wp_get_attachment_image_src($thumbnail_id,'thumbnail');
-					$eye_img = wp_get_attachment_image_src($thumbnail_id,'medium');
-					//$eye_img=wp_get_attachment_image_src($thumbnail_id,'large');
+					//$eye_img=wp_get_attachment_image_src($thumbnail_id,'medium');
+					// lightboxで拡大表示するので大きめの画像を使う
+					$eye_img = wp_get_attachment_image_src($thumbnail_id,'large');
 					//$eye_img=wp_get_attachment_image_src($thumbnail_id,'full');
 					//[0]が画像のURLで、[1]と[2]が、画像の縦横サイズ
+					// 画像が削除されている場合は false が返る
 
 				?>
 
@@ -72,9 +74,9 @@ get_header(); ?>
 					</header><!--/.entry-header-->
 
 					<!--▼ ポートフォリオ用 画像(アイキャッチ画像)を表示 : 開始 -->
-					<?php if( has_post_thumbnail() ): ?>
+					<?php if( $eye_img ): ?>
 					<div class="gallery-thumbnail">
-						<a href="<?php echo $eye_img[0];?>" data-lightbox="group" data-title="<?php the_title();?>">
+						<a href="<?php echo esc_url( $eye_img[0] );?>" data-lightbox="group" data-title="<?php the_title_attribute();?>">
 						<?php the_post_thumbnail(); ?>
 						</a>
 					</div>

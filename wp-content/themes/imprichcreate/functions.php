@@ -239,6 +239,22 @@ function custom_register_taxonomy() {
 }
 add_action( 'init', 'custom_register_taxonomy' );
 
+/*
+一覧ページの見出し（the_archive_title）を調整する。
+WordPress 5.5以降、カスタム投稿タイプの一覧にも「アーカイブ: 」が付くようになったため外す。
+投稿一覧ページは「アーカイブ」ではなく、パンくずリストに合わせて「ブログ」と表示する。
+ */
+function custom_archive_title( $title ) {
+	if ( is_home() ) {
+		return 'ブログ';
+	}
+	if ( is_post_type_archive() ) {
+		return post_type_archive_title( '', false );
+	}
+	return $title;
+}
+add_filter( 'get_the_archive_title', 'custom_archive_title' );
+
 
 
 
